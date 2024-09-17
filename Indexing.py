@@ -6,9 +6,9 @@ def create_index(key:int , Document:str , InvertedIndexTrie ):
     Tokens  :list[int]= set(Document.split())
     for Token in Tokens: 
         if InvertedIndexTrie.get(Token) == None:
-            InvertedIndexTrie[Token] = [key]
+            InvertedIndexTrie[Token] = [int(key)]
         else:
-            InvertedIndexTrie[Token].append(key)            
+            InvertedIndexTrie[Token].append(int(key))            
 
 def insert_To_sorted_list_and_keep_sorted(LIST:list, key:int):
     for i in range(len(LIST)):
