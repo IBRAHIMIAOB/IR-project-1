@@ -1,9 +1,9 @@
 
-import time , datetime
-startTime = time.perf_counter()
+import  datetime
+startTime = datetime.datetime.now()
 import json
 def create_index(key:int , Document:str , InvertedIndexTrie ):
-    Tokens  :list[int]= set(Document.split())
+    Tokens  :list[int]= set(Document.lower().split())
     for Token in Tokens: 
         if InvertedIndexTrie.get(Token) == None:
             InvertedIndexTrie[Token] = [int(key)]
@@ -30,7 +30,7 @@ for key  , document in data.items():
 with open("inverted2_index.json" , "w") as f : 
     json.dump(InvertedIndexTrie , f , indent=1)
 
-print(time.perf_counter() - startTime , end="s")
+print(datetime.datetime.now() - startTime )
     
                       
 
