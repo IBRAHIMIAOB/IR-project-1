@@ -3,7 +3,7 @@ import  datetime
 startTime = datetime.datetime.now()
 import json
 def create_index(key:int , Document:str , InvertedIndexTrie ):
-    Tokens  :list[int]= set(Document.lower().split())
+    Tokens  = set(Document.lower().split())
     for Token in Tokens: 
         if InvertedIndexTrie.get(Token) == None:
             InvertedIndexTrie[Token] = [int(key)]
