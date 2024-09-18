@@ -1,37 +1,21 @@
 
-import  datetime
-startTime = datetime.datetime.now()
-import json
-def create_index(key:int , Document:str , InvertedIndexTrie ):
+
+def create_index_low_level(key:int , Document:str , InvertedIndexDictionary ):
     Tokens  = set(Document.lower().split())
     for Token in Tokens: 
-        if InvertedIndexTrie.get(Token) == None:
-            InvertedIndexTrie[Token] = [int(key)]
+        if InvertedIndexDictionary.get(Token) == None:
+            InvertedIndexDictionary[Token] = [int(key)]
         else:
-            InvertedIndexTrie[Token].append(int(key))            
+            InvertedIndexDictionary[Token].append(int(key))            
 
-def insert_To_sorted_list_and_keep_sorted(LIST:list, key:int):
-    for i in range(len(LIST)):
-        if LIST[i] > key:
-            LIST.insert(i , key)
-            return
-    LIST.insert(len(LIST), key)
-    
-InvertedIndexTrie = {} 
-    
+def create_index(data):
+    InvertedIndexDictionary = {} 
+    for key , document in data.items():
+        create_index_low_level(key , document , InvertedIndexDictionary)
+        
+    return InvertedIndexDictionary
 
 
-with open("data.json" , "r") as f:
-    data:dict = json.load(f)
-    
-for key  , document in data.items():
-    create_index(key , document , InvertedIndexTrie)
-    
-with open("inverted2_index.json" , "w") as f : 
-    json.dump(InvertedIndexTrie , f , indent=1)
-
-print(datetime.datetime.now() - startTime )
-    
                       
 
 
