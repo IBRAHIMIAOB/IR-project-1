@@ -17,7 +17,7 @@ for New in News:
     short_description = New.get("short_description") or " "
     date = New.get("date") or " "
     link = New.get("link") or " "
-    Text = " ".join([category , authors , headline , short_description , date , link ])
+    Text = " \n".join([category , authors , headline , short_description , date , link ])
     formatedData[i] = Text
     
     
