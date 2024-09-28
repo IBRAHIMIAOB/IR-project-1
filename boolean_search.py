@@ -34,7 +34,6 @@ def boolean_search(inverted_index, data, expr):
         # Evaluate the boolean expression using the sets of document IDs
         result = eval(expr, global_values)
     except Exception as e:
-        print(f"Error evaluating expression: {e}")
         return list()
 
     # Return the list of documents that match the query
