@@ -9,16 +9,21 @@ query = ["samsung&apple" , "super&sad" , "paint" , "program" , "war" , "Global&W
 
 data = FormatData()
 index= create_index(data)
-
+arr=  []
 for q in query:
     start = perf_counter_ns()
     array = boolean_search(index , data , q)
     
     amount = len(array)
     totalTime = (perf_counter_ns()-start) 
-    print(f"Query: {q}\ntime: {totalTime}ns \namount : {amount}" , end="\n\n\n\n")
+    arr.append(totalTime)
     
-    
+
+plt.title("Boolean search performance")
+plt.xlabel("Query")
+plt.ylabel("Time in ns")
+plt.bar(query , arr)
+plt.show()
 
 
     
