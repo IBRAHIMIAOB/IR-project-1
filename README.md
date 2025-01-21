@@ -1,6 +1,4 @@
-Here is a properly formatted `README.md` file for your Boolean Search project:
 
-```markdown
 # Boolean Search Project
 
 ## Project Overview
